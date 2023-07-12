@@ -1,12 +1,24 @@
 import React, { useState, createContext, ReactNode } from 'react';
 import { getIssue, getIssueList } from '../../utils/apiUtils';
 
-//TODO type any를 고쳐야한다
+interface GitHubIssue {
+  id: number;
+  number: number;
+  title: string;
+  user: {
+    login: string;
+    avatar_url: string;
+  };
+  created_at: string;
+  comments: number;
+  body: string;
+}
+
 interface GitHubContextProps {
-  issueList: any[];
-  issue: any | null;
-  fetchIssueList: () => void;
-  fetchIssue: (issueNumber: number) => void;
+  issueList: GitHubIssue[];
+  issue: GitHubIssue | null;
+  fetchIssueList: () => Promise<void>;
+  fetchIssue: (issueNumber: number) => Promise<void>;
 }
 
 interface GitHubProviderProps {
@@ -16,20 +28,21 @@ interface GitHubProviderProps {
 const initialContext: GitHubContextProps = {
   issueList: [],
   issue: null,
-  fetchIssueList: () => {},
-  fetchIssue: () => {},
+  fetchIssueList: async () => {},
+  fetchIssue: async (issueNumber: number) => {},
 };
 
 export const GitHubContext = createContext<GitHubContextProps>(initialContext);
 
 export const GithubProvider = ({ children }: GitHubProviderProps) => {
-  const [issueList, setIssueList] = useState<any[]>([]);
-  const [issue, setIssue] = useState<any | null>(null);
+  const [issueList, setIssueList] = useState<GitHubIssue[]>([]);
+  const [issue, setIssue] = useState<GitHubIssue | null>(null);
 
   const fetchIssueList = async () => {
     try {
-      const data = await getIssueList();
-      setIssueList(data);
+      const currentPage = Math.ceil(issueList.length / 30) + 1;
+      const newIssueList = await getIssueList(currentPage, 10);
+      setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {
       console.error(error);
     }

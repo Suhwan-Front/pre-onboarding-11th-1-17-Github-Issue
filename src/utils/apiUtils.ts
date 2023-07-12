@@ -1,17 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const ACCESS_TOKEN = process.env.GIT_ISSUE_ACCESS_TOKEN;
 const repoOwner = 'facebook';
 const repo = 'react';
 
-export const getIssueList = async () => {
+export const getIssueList = async (page: number, perPage: number) => {
   try {
     const response = await axios.get(
       `https://api.github.com/repos/${repoOwner}/${repo}/issues`,
       {
+        params: {
+          sort: 'comments',
+          page,
+          per_page: perPage,
+        },
         headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
+          Authorization: `${ACCESS_TOKEN}`,
         },
       }
     );
@@ -27,7 +32,7 @@ export const getIssue = async (issueNumber: number) => {
       `https://api.github.com/repos/${repoOwner}/${repo}/issues/${issueNumber}`,
       {
         headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
+          Authorization: `${ACCESS_TOKEN}`,
         },
       }
     );
