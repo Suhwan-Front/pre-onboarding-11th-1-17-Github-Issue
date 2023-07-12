@@ -6,10 +6,10 @@ module.exports = {
   extends: [
     'react-app',
     'airbnb',
-    'prettier', // prettier 추가
+    'prettier',
     'standard-with-typescript',
     'plugin:react/recommended',
-    'plugin:prettier/recommended', // plugin:prettier/recommended 추가
+    'plugin:prettier/recommended',
   ],
   overrides: [
     {
