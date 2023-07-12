@@ -4,31 +4,31 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "react-app",
-    "airbnb",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react",
-    "standard-with-typescript",
-    "plugin:react/recommended",
+    'react-app',
+    'airbnb',
+    'prettier',
+    'standard-with-typescript',
+    'plugin:react/recommended',
   ],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script",
+        sourceType: 'script',
       },
     },
   ],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    project: './tsconfig.json',
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["prettier"],
+  parser: '@typescript-eslint/parser',
+  plugins: ['prettier'],
   rules: {
-    "prettier/prettier": "error",
+    'prettier/prettier': 'error',
   },
 };
