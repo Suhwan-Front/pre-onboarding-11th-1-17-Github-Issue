@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { DetailContext } from '../../contexts/provider/DetailProvider';
+import Loading from '../IssueList/Loading';
 
 const IssueDetail = () => {
   const { issueNumber } = useParams<{ issueNumber: string }>();
@@ -11,11 +12,11 @@ const IssueDetail = () => {
   }, []);
 
   if (!issue) {
-    return <>로딩중입니다...</>;
+    return <Loading />;
   }
 
   if (issue.number !== parseInt(issueNumber || '', 10)) {
-    return <>로딩중입니다...</>;
+    return <Loading />;
   }
 
   return (

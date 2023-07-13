@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { ListContext } from './provider/ListProvider';
-import { DetailContext } from './provider/DetailProvider';
+import { ListContext } from '../contexts/provider/ListProvider';
+import { DetailContext } from '../contexts/provider/DetailProvider';
 
 const useGitHub = () => {
   const { issueList, fetchIssueList } = useContext(ListContext);
