@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ListProvider } from './contexts/provider/ListProvider';
 import { DetailProvider } from './contexts/provider/DetailProvider';
 import IssueListPage from './pages/IssueListPage';
-import IssueDetail from './components/IssueDetail/IssueDetail';
+import IssueDetail from './pages/IssueDetailPage';
 import Header from './components/Header/Header';
 
 function App() {

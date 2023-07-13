@@ -27,10 +27,16 @@ const IssueListPage = () => {
   return (
     <IssueWrap>
       {issueList.map((issue: any, index: number) => (
-        <IssueListItem key={index} issue={issue} />
+        <React.Fragment key={index}>
+          <IssueListItem issue={issue} />
+          {(index + 1) % 4 === 0 && (
+            <a href="https://www.wanted.co.kr/">
+              <Advertisement />
+            </a>
+          )}
+        </React.Fragment>
       ))}
       <div style={{ height: '1px' }} />
-      {issueList.length % 4 === 3 && <Advertisement />}
       <div ref={target} style={{ height: '1px' }} />
       {loading && <Loading />}
     </IssueWrap>
