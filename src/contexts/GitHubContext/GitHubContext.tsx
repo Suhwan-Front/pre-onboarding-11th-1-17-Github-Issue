@@ -36,7 +36,7 @@ const initialContext: GitHubContextProps = {
   issueList: [],
   issue: null,
   fetchIssueList: async () => {},
-  fetchIssue: async (issueNumber: number) => {},
+  fetchIssue: async () => {},
   setIssueList: () => {},
 };
 

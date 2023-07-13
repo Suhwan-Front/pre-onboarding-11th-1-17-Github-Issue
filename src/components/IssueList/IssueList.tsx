@@ -1,7 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { GitHubContext } from '../../contexts/GitHubContext/GitHubContext';
 import { Link } from 'react-router-dom';
+import { GitHubContext } from '../../contexts/GitHubContext/GitHubContext';
 import { getIssueList } from '../../utils/apiUtils';
+import {
+  IssueWrap,
+  IssueListItemBox,
+  IssueTitleWrapper,
+  IssueNumber,
+  IssueTitle,
+  IssueUser,
+  IssueDate,
+  IssueComments,
+} from './IssueListPresenter';
 
 const IssueList = () => {
   const { issueList, fetchIssueList, setIssueList } = useContext(GitHubContext);
@@ -38,19 +48,18 @@ const IssueList = () => {
   }, []);
 
   return (
-    <>
+    <IssueWrap>
       {issueList.map((issue: any, index: number) => (
-        <div key={index}>
-          <div>
-            <h3>
-              <Link to={`/issue/${issue.number}`}>
-                # {issue.number} = {issue.title}
-              </Link>
-            </h3>
-          </div>
-          <div>작성자 : {issue.user.login}</div>
-          <div>작성일 : {issue.created_at}</div>
-          <div>코멘트 : {issue.comments}</div>
+        <IssueListItemBox key={index}>
+          <IssueTitleWrapper>
+            <Link to={`/issue/${issue.number}`}>
+              <IssueNumber># {issue.number}</IssueNumber>
+              <IssueTitle>{issue.title}</IssueTitle>
+            </Link>
+          </IssueTitleWrapper>
+          <IssueUser>작성자 : {issue.user.login}</IssueUser>
+          <IssueDate>작성일 : {issue.created_at}</IssueDate>
+          <IssueComments>코멘트 : {issue.comments}</IssueComments>
           {index % 4 === 3 && (
             <div>
               <br />
@@ -61,10 +70,10 @@ const IssueList = () => {
               </button>
             </div>
           )}
-        </div>
+        </IssueListItemBox>
       ))}
       {loading && <div>이슈를 불러오는 중입니다...</div>}
-    </>
+    </IssueWrap>
   );
 };
 
