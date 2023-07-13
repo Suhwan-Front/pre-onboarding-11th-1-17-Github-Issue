@@ -17,20 +17,18 @@ const IssueListItem = ({
   issue: any;
   children?: React.ReactNode;
 }) => (
-  <>
-    <IssueListItemBox key={issue.number}>
-      <IssueTitleWrapper>
-        <Link to={`/issue/${issue.number}`}>
-          <IssueNumber># {issue.number}</IssueNumber>
-          <IssueTitle>{issue.title}</IssueTitle>
-        </Link>
-      </IssueTitleWrapper>
-      <IssueUser>작성자 : {issue.user.login}</IssueUser>
-      <IssueDate>작성일 : {issue.created_at}</IssueDate>
-      <IssueComments>코멘트 : {issue.comments}</IssueComments>
-    </IssueListItemBox>
+  <IssueListItemBox key={issue.number}>
+    <IssueTitleWrapper>
+      <Link to={`/issue/${issue.number}`}>
+        <IssueNumber># {issue.number}</IssueNumber>
+        <IssueTitle>{issue.title}</IssueTitle>
+      </Link>
+    </IssueTitleWrapper>
+    <IssueUser>작성자 : {issue.user.login}</IssueUser>
+    <IssueDate>작성일 : {issue.created_at}</IssueDate>
+    <IssueComments>코멘트 : {issue.comments}</IssueComments>
     {children}
-  </>
+  </IssueListItemBox>
 );
 
 export default IssueListItem;
