@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GitHubContext } from '../../contexts/GitHubContext/GitHubContext';
 import { Link } from 'react-router-dom';
+import { getIssueList } from '../../utils/apiUtils';
 
 const IssueList = () => {
-  const { issueList, fetchIssueList } = useContext(GitHubContext);
+  const { issueList, fetchIssueList, setIssueList } = useContext(GitHubContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -21,7 +22,9 @@ const IssueList = () => {
 
   const fetchMoreIssueList = async () => {
     try {
-      await fetchIssueList();
+      const currentPage = Math.ceil(issueList.length / 30);
+      const newIssueList = await getIssueList(currentPage, 10);
+      setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {
       console.error(error);
     }
@@ -56,7 +59,7 @@ const IssueList = () => {
           )}
         </div>
       ))}
-      {loading && <div>Loading more issue...</div>}
+      {loading && <div>이슈를 불러오는 중입니다...</div>}
     </>
   );
 };

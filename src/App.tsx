@@ -11,7 +11,7 @@ function App() {
         <GithubProvider>
           <Routes>
             <Route path="/" Component={IssueList} />
-            <Route path="/issueList/:issueNumber" Component={IssueDetail} />
+            <Route path="/issue/:issueNumber" Component={IssueDetail} />
           </Routes>
         </GithubProvider>
       </BrowserRouter>

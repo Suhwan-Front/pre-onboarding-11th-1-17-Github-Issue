@@ -11,11 +11,11 @@ const IssueDetail = () => {
   }, []);
 
   if (!issue) {
-    return <>로딩중입니다...</>;
+    return <>불러오는 중입니다...</>;
   }
 
   if (issue.number !== parseInt(issueNumber || '', 10)) {
-    return <>해당 이슈는 없습니다!</>;
+    return <>로딩중입니다...</>;
   }
 
   return (

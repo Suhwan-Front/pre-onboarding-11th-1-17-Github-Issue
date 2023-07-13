@@ -1,4 +1,10 @@
-import React, { useState, createContext, ReactNode } from 'react';
+import React, {
+  useState,
+  createContext,
+  ReactNode,
+  SetStateAction,
+  Dispatch,
+} from 'react';
 import { getIssue, getIssueList } from '../../utils/apiUtils';
 
 interface GitHubIssue {
@@ -19,6 +25,7 @@ interface GitHubContextProps {
   issue: GitHubIssue | null;
   fetchIssueList: () => Promise<void>;
   fetchIssue: (issueNumber: number) => Promise<void>;
+  setIssueList: Dispatch<SetStateAction<GitHubIssue[]>>;
 }
 
 interface GitHubProviderProps {
@@ -30,6 +37,7 @@ const initialContext: GitHubContextProps = {
   issue: null,
   fetchIssueList: async () => {},
   fetchIssue: async (issueNumber: number) => {},
+  setIssueList: () => {},
 };
 
 export const GitHubContext = createContext<GitHubContextProps>(initialContext);
@@ -64,6 +72,7 @@ export const GithubProvider = ({ children }: GitHubProviderProps) => {
         issue,
         fetchIssueList,
         fetchIssue,
+        setIssueList,
       }}
     >
       {children}
