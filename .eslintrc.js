@@ -37,6 +37,7 @@ module.exports = {
     'no-restricted-globals': 'off',
     'no-unused-vars': 'off',
     'react/prop-types': 'off',
+    'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 0,
     'import/no-extraneous-dependencies': [
       'error',

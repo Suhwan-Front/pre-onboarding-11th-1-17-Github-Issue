@@ -9,6 +9,7 @@ import {
   IssueDate,
   IssueComments,
 } from './IssueListPresenter';
+import calculateDate from '../../utils/calculateDate';
 
 const IssueListItem = ({ issue }: { issue: any }) => (
   <IssueListItemBox>
@@ -19,7 +20,7 @@ const IssueListItem = ({ issue }: { issue: any }) => (
       </Link>
     </IssueTitleWrapper>
     <IssueUser>작성자 : {issue.user.login}</IssueUser>
-    <IssueDate>작성일 : {issue.created_at}</IssueDate>
+    <IssueDate>작성일 : {calculateDate(issue.created_at)}</IssueDate>
     <IssueComments>코멘트 : {issue.comments}</IssueComments>
   </IssueListItemBox>
 );
