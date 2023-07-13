@@ -36,5 +36,18 @@ module.exports = {
     'no-return-assign': 'off',
     'no-restricted-globals': 'off',
     'no-unused-vars': 'off',
+    'react/prop-types': 'off',
+    'import/no-extraneous-dependencies': 0,
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.test.ts',
+          '**/*.spec.ts',
+          '**/*.test.tsx',
+          '**/*.spec.tsx',
+        ],
+      },
+    ],
   },
 };
