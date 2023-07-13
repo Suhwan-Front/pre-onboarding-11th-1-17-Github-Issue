@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const ACCESS_TOKEN = process.env.GIT_ISSUE_ACCESS_TOKEN;
+const ACCESS_TOKEN = process.env.REACT_APP_GIT_ISSUE_ACCESS_TOKEN;
 const repoOwner = 'facebook';
 const repo = 'react';
 

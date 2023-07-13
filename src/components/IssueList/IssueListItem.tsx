@@ -18,7 +18,7 @@ const IssueListItem = ({
   children?: React.ReactNode;
 }) => (
   <>
-    <IssueListItemBox key={issue.id}>
+    <IssueListItemBox key={issue.number}>
       <IssueTitleWrapper>
         <Link to={`/issue/${issue.number}`}>
           <IssueNumber># {issue.number}</IssueNumber>
