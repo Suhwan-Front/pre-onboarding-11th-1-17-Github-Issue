@@ -22,7 +22,7 @@ const IssueList = () => {
 
   const fetchMoreIssueList = async () => {
     try {
-      const currentPage = Math.ceil(issueList.length / 30);
+      const currentPage = Math.ceil(issueList.length / 10) + 1;
       const newIssueList = await getIssueList(currentPage, 10);
       setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {
@@ -54,7 +54,11 @@ const IssueList = () => {
           {index % 4 === 3 && (
             <div>
               <br />
-              <button>광고입니다.</button>
+              <button
+                onClick={() => (location.href = 'https://www.wanted.co.kr/')}
+              >
+                광고입니다.
+              </button>
             </div>
           )}
         </div>

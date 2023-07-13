@@ -48,7 +48,7 @@ export const GithubProvider = ({ children }: GitHubProviderProps) => {
 
   const fetchIssueList = async () => {
     try {
-      const currentPage = Math.ceil(issueList.length / 30) + 1;
+      const currentPage = Math.ceil(issueList.length / 10) + 1;
       const newIssueList = await getIssueList(currentPage, 10);
       setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {

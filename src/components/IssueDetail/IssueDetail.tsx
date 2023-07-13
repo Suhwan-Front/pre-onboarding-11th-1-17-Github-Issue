@@ -11,7 +11,7 @@ const IssueDetail = () => {
   }, []);
 
   if (!issue) {
-    return <>불러오는 중입니다...</>;
+    return <>로딩중입니다...</>;
   }
 
   if (issue.number !== parseInt(issueNumber || '', 10)) {
