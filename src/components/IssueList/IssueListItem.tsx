@@ -10,14 +10,8 @@ import {
   IssueComments,
 } from './IssueListPresenter';
 
-const IssueListItem = ({
-  issue,
-  children,
-}: {
-  issue: any;
-  children?: React.ReactNode;
-}) => (
-  <IssueListItemBox key={issue.number}>
+const IssueListItem = ({ issue }: { issue: any }) => (
+  <IssueListItemBox>
     <IssueTitleWrapper>
       <Link to={`/issue/${issue.number}`}>
         <IssueNumber># {issue.number}</IssueNumber>
@@ -27,7 +21,6 @@ const IssueListItem = ({
     <IssueUser>작성자 : {issue.user.login}</IssueUser>
     <IssueDate>작성일 : {issue.created_at}</IssueDate>
     <IssueComments>코멘트 : {issue.comments}</IssueComments>
-    {children}
   </IssueListItemBox>
 );
 

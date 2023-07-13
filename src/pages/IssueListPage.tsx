@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { GitHubContext } from '../contexts/GitHubContext/GitHubContext';
+import React, { useContext, useEffect, useRef } from 'react';
+import { ListContext } from '../contexts/provider/ListProvider';
 import { IssueWrap } from '../components/IssueList/IssueListPresenter';
 import IssueListItem from '../components/IssueList/IssueListItem';
 import Advertisement from '../components/Advertisement/Advertisement';
 import useInfiniteScroll from '../hooks/useInfinityScroll';
 
 const IssueListPage = () => {
-  const { issueList, fetchIssueList } = useContext(GitHubContext);
+  const { issueList, fetchIssueList } = useContext(ListContext);
   const target = useRef(null);
   const Intersecting = useInfiniteScroll(target);
 
@@ -20,15 +20,11 @@ const IssueListPage = () => {
 
   return (
     <IssueWrap>
-      {issueList.map((issue: any, index: number) =>
-        (index + 1) % 4 === 0 ? (
-          <IssueListItem key={index} issue={issue}>
-            <Advertisement />
-          </IssueListItem>
-        ) : (
-          <IssueListItem key={index} issue={issue} />
-        )
-      )}
+      {issueList.map((issue: any, index: number) => (
+        <IssueListItem key={index} issue={issue} />
+      ))}
+      <div style={{ height: '1px' }} />
+      {issueList.length % 4 === 3 && <Advertisement />}
       <div ref={target} style={{ height: '1px' }} />
     </IssueWrap>
   );

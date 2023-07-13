@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { GitHubContext } from '../../contexts/GitHubContext/GitHubContext';
+import { DetailContext } from '../../contexts/provider/DetailProvider';
 
 const IssueDetail = () => {
   const { issueNumber } = useParams<{ issueNumber: string }>();
-  const { issue, fetchIssue } = useContext(GitHubContext);
+  const { issue, fetchIssue } = useContext(DetailContext);
 
   useEffect(() => {
     fetchIssue(parseInt(issueNumber || '', 10));
