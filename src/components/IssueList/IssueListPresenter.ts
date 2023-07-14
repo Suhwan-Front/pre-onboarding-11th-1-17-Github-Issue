@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const IssueWrap = styled.ul`
   list-style: none;
@@ -47,6 +48,10 @@ const IssueComments = styled.span`
   color: #666;
 `;
 
+const IssueListLink = styled(Link)`
+  text-decoration: none;
+`;
+
 export {
   IssueWrap,
   IssueListItemBox,
@@ -56,4 +61,5 @@ export {
   IssueUser,
   IssueDate,
   IssueComments,
+  IssueListLink,
 };

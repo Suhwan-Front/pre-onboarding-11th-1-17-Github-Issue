@@ -16,7 +16,7 @@
   <tbody>
     <tr>
       <td align="center"><a href="https://github.com/Final-hyen"><img src="https://avatars.githubusercontent.com/u/120147782?v=4"width=100px;" alt=""/><br /><sub><b>최종현 (팀장)</b></sub></a><br /></td>
-      <td align="center";><a href="https://github.com/Suhwan-Front"><img src="https://avatars.githubusercontent.com/u/99709797?s=200&v=4" width="100px;" alt=""/><br /><sub><b>김수환</b></sub></a><br /></td>
+      <td align="center";><a href="https://github.com/Suhwan0818"><img src="https://avatars.githubusercontent.com/u/48269420?v=4" width="100px;" alt=""/><br /><sub><b>김수환</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/hayeonn2"><img src="https://avatars.githubusercontent.com/u/111109573?v=4" width="100px;" alt=""/><br /><sub><b>김하연</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/wjstjdus96"><img src="https://avatars.githubusercontent.com/u/77755620?v=4" width="100px;" alt=""/><br /><sub><b>전서연</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/seounjin"><img src="https://avatars.githubusercontent.com/u/39517396?v=4" width="100px;" alt=""/><br /><sub><b>변성진</b></sub></a><br /></td>
@@ -37,6 +37,10 @@ $ npm run start
 
 [프로젝트 바로가기](https://main--dynamic-stardust-16b5d1.netlify.app/)
 
+## 전체 구동 화면
+
+![실행결과](/etc/실행결과.gif)
+
 ## 개발환경
 
 - 언어 : typescript
@@ -53,7 +57,9 @@ $ npm run start
   ┣ 📁Header
   ┣ 📁IssueDetail
   ┣ 📁IssueList
+  ┣ 📁LoadingScreen
   ┣ 📁ScrollObserver
+  ┣ 📁ShadeScreen
 ┣ 📁contexts
   ┣ 📁provider
 ┣ 📁hooks
@@ -155,7 +161,7 @@ $ npm run start
 
 ### React.memo를 사용한 렌더링 최적화
 
-- props 변경이 없는 IssueListItem 컴포넌트에 React.memo 적용 
+- props 변경이 없는 IssueListItem 컴포넌트에 React.memo 적용
 
 ```typescript
 const IssueListItem = ({ issue }: { issue: any }) => (
@@ -175,5 +181,3 @@ export default React.memo(IssueListItem);
 ```
 
 ---
-
-## 전체 구동 화면
