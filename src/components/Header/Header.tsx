@@ -2,7 +2,7 @@ import HeaderTitle from './HeaderPresenter';
 
 const Header = () => (
   <HeaderTitle>
-    <h1>Angular/Angular-cli</h1>
+    <h1>facebook/react</h1>
   </HeaderTitle>
 );
 

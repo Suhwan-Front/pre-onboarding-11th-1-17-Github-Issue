@@ -32,7 +32,7 @@ export const getIssue = async (issueNumber: number) => {
       `https://api.github.com/repos/${repoOwner}/${repo}/issues/${issueNumber}`,
       {
         headers: {
-          Authorization: `${ACCESS_TOKEN}`,
+          Authorization: `${123}`,
         },
       }
     );

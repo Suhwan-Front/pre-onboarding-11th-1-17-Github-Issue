@@ -21,34 +21,47 @@ interface ListContextProps {
   issueList: GiHubIssueList[];
   fetchIssueList: () => Promise<void>;
   setIssueList: Dispatch<SetStateAction<GiHubIssueList[]>>;
+  fetchError: string | null;
 }
 
 interface ListProviderProps {
   children: ReactNode;
 }
 
+interface SystemError {
+  code: string;
+  message: string;
+}
+
 const initialListContext: ListContextProps = {
   issueList: [],
   fetchIssueList: async () => {},
   setIssueList: () => {},
+  fetchError: null,
 };
 
 export const ListContext = createContext<ListContextProps>(initialListContext);
 
 export const ListProvider = ({ children }: ListProviderProps) => {
   const [issueList, setIssueList] = useState<GiHubIssueList[]>([]);
+  const [issueListPage, setIssueListPage] = useState<number>(1);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   const fetchIssueList = async () => {
     try {
-      const currentPage = Math.ceil(issueList.length / 10) + 1;
+      const currentPage = issueListPage;
       const newIssueList = await getIssueList(currentPage, 5);
+      setIssueListPage((prev) => prev + 1);
       setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {
-      console.error(error);
+      const err = error as SystemError;
+      setFetchError(err.message);
     }
   };
   return (
-    <ListContext.Provider value={{ issueList, fetchIssueList, setIssueList }}>
+    <ListContext.Provider
+      value={{ issueList, fetchIssueList, setIssueList, fetchError }}
+    >
       {children}
     </ListContext.Provider>
   );

@@ -17,15 +17,22 @@ interface GitHubIssueDetail {
 interface DetailContextProps {
   issue: GitHubIssueDetail | null;
   fetchIssue: (issueNumber: number) => Promise<void>;
+  fetchError: string | null;
 }
 
 interface DetailProviderProps {
   children: ReactNode;
 }
 
+interface SystemError {
+  code: string;
+  message: string;
+}
+
 const initialDetailContext: DetailContextProps = {
   issue: null,
   fetchIssue: async () => {},
+  fetchError: null,
 };
 
 export const DetailContext = createContext<DetailContextProps>(
@@ -34,18 +41,20 @@ export const DetailContext = createContext<DetailContextProps>(
 
 export const DetailProvider = ({ children }: DetailProviderProps) => {
   const [issue, setIssue] = useState<GitHubIssueDetail | null>(null);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   const fetchIssue = async (issueNumber: number) => {
     try {
       const data = await getIssue(issueNumber);
       setIssue(data);
     } catch (error) {
-      console.error(error);
+      const err = error as SystemError;
+      setFetchError(err.message);
     }
   };
 
   return (
-    <DetailContext.Provider value={{ issue, fetchIssue }}>
+    <DetailContext.Provider value={{ issue, fetchIssue, fetchError }}>
       {children}
     </DetailContext.Provider>
   );

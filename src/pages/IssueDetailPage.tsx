@@ -7,13 +7,14 @@ import {
   DetailHeader,
   DetailWrapper,
 } from '../components/IssueDetail/IssueDetailPresenter';
+import { IssueWrap } from '../components/IssueList/IssueListPresenter';
 import Loading from '../components/IssueList/Loading';
 import IssueListItem from '../components/IssueList/IssueListItem';
-import { IssueWrap } from '../components/IssueList/IssueListPresenter';
+import ErrorPage from './ErrorPage';
 
 const IssueDetail = () => {
   const { issueNumber } = useParams<{ issueNumber: string }>();
-  const { issue, fetchIssue } = useContext(DetailContext);
+  const { issue, fetchIssue, fetchError } = useContext(DetailContext);
 
   useEffect(() => {
     fetchIssue(parseInt(issueNumber || '', 10));
@@ -25,6 +26,10 @@ const IssueDetail = () => {
 
   if (issue.number !== parseInt(issueNumber || '', 10)) {
     return <Loading />;
+  }
+
+  if (fetchError) {
+    return <ErrorPage errorContent={fetchError} />;
   }
 
   return (
