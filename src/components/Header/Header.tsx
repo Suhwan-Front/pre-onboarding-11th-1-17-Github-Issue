@@ -1,8 +1,11 @@
+import { OWNER, REPO } from '../constants/const';
 import HeaderTitle from './HeaderPresenter';
 
 const Header = () => (
   <HeaderTitle>
-    <h1>facebook/react</h1>
+    <h1>
+      {OWNER}/{REPO}
+    </h1>
   </HeaderTitle>
 );
 
