@@ -6,10 +6,13 @@ import { useDetailIssue } from '../hooks/useIssue';
 
 const IssueDetailPage = () => {
   const { issueNumber } = useParams<{ issueNumber: string }>();
-  const { issue, fetchIssue, fetchError } = useDetailIssue();
+  const { issue, fetchIssue, fetchError, resetIssue } = useDetailIssue();
 
   useEffect(() => {
     fetchIssue(parseInt(issueNumber || '', 10));
+    return () => {
+      resetIssue();
+    };
   }, []);
 
   if (fetchError) {

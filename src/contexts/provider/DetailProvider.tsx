@@ -19,6 +19,7 @@ interface DetailContextProps {
   issue: GitHubIssueDetail | null;
   fetchIssue: (issueNumber: number) => Promise<void>;
   fetchError: string | null;
+  resetIssue: () => void;
 }
 
 interface DetailProviderProps {
@@ -34,6 +35,7 @@ const initialDetailContext: DetailContextProps = {
   issue: null,
   fetchIssue: async () => {},
   fetchError: null,
+  resetIssue: () => null,
 };
 
 export const DetailContext = createContext<DetailContextProps>(
@@ -58,8 +60,12 @@ export const DetailProvider = ({ children }: DetailProviderProps) => {
     }
   };
 
+  const resetIssue = () => {
+    setIssue(null);
+  }
+
   return (
-    <DetailContext.Provider value={{ issue, fetchIssue, fetchError }}>
+    <DetailContext.Provider value={{ issue, fetchIssue, fetchError, resetIssue }}>
       {children}
     </DetailContext.Provider>
   );
