@@ -47,7 +47,6 @@ export const DetailProvider = ({ children }: DetailProviderProps) => {
   const [fetchError, setFetchError] = useState<string | null>(null);
   const { handleLoading } = useLoading();
 
-  
   const fetchIssue = async (issueNumber: number) => {
     try {
       handleLoading(true);
@@ -62,10 +61,12 @@ export const DetailProvider = ({ children }: DetailProviderProps) => {
 
   const resetIssue = () => {
     setIssue(null);
-  }
+  };
 
   return (
-    <DetailContext.Provider value={{ issue, fetchIssue, fetchError, resetIssue }}>
+    <DetailContext.Provider
+      value={{ issue, fetchIssue, fetchError, resetIssue }}
+    >
       {children}
     </DetailContext.Provider>
   );

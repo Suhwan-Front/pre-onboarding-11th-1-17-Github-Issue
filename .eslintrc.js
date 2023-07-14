@@ -57,5 +57,11 @@ module.exports = {
         allowFunctions: true,
       },
     ],
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        enableDangerousAutofixThisMayCauseInfiniteLoops: true,
+      },
+    ],
   },
 };
