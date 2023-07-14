@@ -10,11 +10,13 @@ import { useIssueList } from '../hooks/useIssue';
 const IssueListPage = () => {
   const { issueList, fetchIssueList, fetchError } = useIssueList();
   const target = useRef(null);
-  const Intersecting = useInfiniteScroll(target);
+  const intersecting = useInfiniteScroll(target);
 
   useEffect(() => {
-    if (Intersecting) fetchIssueList();
-  }, [Intersecting]);
+    if (intersecting) {
+      fetchIssueList();
+    }
+  }, [intersecting, fetchIssueList]);
 
   if (fetchError) {
     return <ErrorPage errorContent={fetchError} />;

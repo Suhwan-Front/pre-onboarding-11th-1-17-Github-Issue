@@ -13,7 +13,7 @@ const IssueDetailPage = () => {
     return () => {
       resetIssue();
     };
-  }, []);
+  }, [fetchIssue, issueNumber, resetIssue]);
 
   if (fetchError) {
     return <ErrorPage errorContent={fetchError} />;
