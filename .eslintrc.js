@@ -37,6 +37,7 @@ module.exports = {
     'no-return-assign': 'off',
     'no-restricted-globals': 'off',
     'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     'react/prop-types': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 0,
