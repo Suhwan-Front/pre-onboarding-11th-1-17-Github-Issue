@@ -153,6 +153,27 @@ $ npm run start
 - ErrorPage 컴포넌트 생성하고 에러 메세지를 `props`로 받음
 - 에러 메세지가 담긴 context의 `fetchError`값을 사용하여 값이 있을 경우 ErrorPage 렌더링함
 
+### React.memo를 사용한 렌더링 최적화
+
+- props 변경이 없는 IssueListItem 컴포넌트에 React.memo 적용 
+
+```typescript
+const IssueListItem = ({ issue }: { issue: any }) => (
+  <IssueListItemBox>
+    <IssueTitleWrapper>
+      <Link to={`/issue/${issue.number}`}>
+        <IssueNumber># {issue.number}</IssueNumber>
+        <IssueTitle>{issue.title}</IssueTitle>
+      </Link>
+    </IssueTitleWrapper>
+    <IssueUser>작성자 : {issue.user.login}</IssueUser>
+    <IssueDate>작성일 : {calculateDate(issue.created_at)}</IssueDate>
+    <IssueComments>코멘트 : {issue.comments}</IssueComments>
+  </IssueListItemBox>
+);
+export default React.memo(IssueListItem);
+```
+
 ---
 
 ## 전체 구동 화면

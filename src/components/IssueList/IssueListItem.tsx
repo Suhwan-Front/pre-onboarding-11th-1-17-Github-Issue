@@ -24,5 +24,4 @@ const IssueListItem = ({ issue }: { issue: any }) => (
     <IssueComments>코멘트 : {issue.comments}</IssueComments>
   </IssueListItemBox>
 );
-
-export default IssueListItem;
+export default React.memo(IssueListItem);
