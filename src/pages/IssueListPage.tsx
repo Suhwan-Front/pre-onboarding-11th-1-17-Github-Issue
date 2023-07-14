@@ -20,7 +20,7 @@ const IssueListPage = () => {
     return () => {
       setLoading(false);
     };
-  }, [Intersecting]);
+  }, [Intersecting, fetchIssueList]);
 
   if (fetchError) {
     return <ErrorPage errorContent={fetchError} />;

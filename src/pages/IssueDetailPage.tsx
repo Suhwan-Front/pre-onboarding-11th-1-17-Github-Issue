@@ -20,7 +20,7 @@ const IssueDetail = () => {
 
   useEffect(() => {
     fetchIssue(parseInt(issueNumber || '', 10));
-  }, []);
+  }, [fetchIssue, issueNumber]);
 
   if (!issue) {
     return <Loading />;
