@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from 'react';
 import { IssueWrap } from '../components/IssueList/IssueListPresenter';
 import IssueListItem from '../components/IssueList/IssueListItem';
