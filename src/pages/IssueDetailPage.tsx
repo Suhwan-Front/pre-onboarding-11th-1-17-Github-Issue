@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import remarkGfm from 'remark-gfm';
 import { DetailContext } from '../contexts/provider/DetailProvider';
 import {
   DetailAvatar,
@@ -41,7 +43,9 @@ const IssueDetail = () => {
         </IssueWrap>
       </DetailHeader>
 
-      <DetailContent>{issue.body}</DetailContent>
+      <DetailContent>
+        <ReactMarkdown rehypePlugins={[remarkGfm]}>{issue.body}</ReactMarkdown>
+      </DetailContent>
     </DetailWrapper>
   );
 };

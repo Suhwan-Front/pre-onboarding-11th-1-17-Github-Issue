@@ -50,5 +50,11 @@ module.exports = {
         ],
       },
     ],
+    'react/no-children-prop': [
+      2,
+      {
+        allowFunctions: true,
+      },
+    ],
   },
 };

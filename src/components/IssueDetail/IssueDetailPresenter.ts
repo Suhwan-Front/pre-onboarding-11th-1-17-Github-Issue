@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 const DetailWrapper = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
 `;
 
 const DetailHeader = styled.div`
@@ -17,6 +20,7 @@ const DetailContent = styled.div`
   padding: 20px;
   overflow-y: auto;
   height: 600px;
+  margin: 0 auto;
 
   &::-webkit-scrollbar {
     display: none;

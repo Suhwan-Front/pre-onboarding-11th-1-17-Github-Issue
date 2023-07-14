@@ -50,7 +50,7 @@ export const ListProvider = ({ children }: ListProviderProps) => {
   const fetchIssueList = async () => {
     try {
       const currentPage = issueListPage;
-      const newIssueList = await getIssueList(currentPage, 5);
+      const newIssueList = await getIssueList(currentPage, 10);
       setIssueListPage((prev) => prev + 1);
       setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {

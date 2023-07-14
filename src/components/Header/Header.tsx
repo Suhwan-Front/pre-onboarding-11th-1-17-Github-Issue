@@ -1,11 +1,13 @@
 import { OWNER, REPO } from '../constants/const';
-import HeaderTitle from './HeaderPresenter';
+import { HeaderTitle, HeaderTitleLink } from './HeaderPresenter';
 
 const Header = () => (
   <HeaderTitle>
-    <h1>
-      {OWNER}/{REPO}
-    </h1>
+    <HeaderTitleLink to={'/'}>
+      <h1>
+        {OWNER}/{REPO}
+      </h1>
+    </HeaderTitleLink>
   </HeaderTitle>
 );
 
