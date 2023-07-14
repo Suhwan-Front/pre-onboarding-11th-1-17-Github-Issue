@@ -1,4 +1,6 @@
 import React from 'react';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import remarkGfm from 'remark-gfm';
 import IssueListItem from '../IssueList/IssueListItem';
 import { IssueWrap } from '../IssueList/IssueListPresenter';
 import {
@@ -22,8 +24,9 @@ const IssueDetail = ({ avatar_url, issue, body }: IssueDetailProps) => (
         <IssueListItem key={null} issue={issue} />
       </IssueWrap>
     </DetailHeader>
-
-    <DetailContent>{body}</DetailContent>
+    <DetailContent>
+      <ReactMarkdown rehypePlugins={[remarkGfm]}>{issue.body}</ReactMarkdown>
+    </DetailContent>
   </DetailWrapper>
 );
 

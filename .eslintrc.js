@@ -23,7 +23,7 @@ module.exports = {
   ignorePatterns: ['.eslintrc.js'],
   plugins: ['prettier'],
   rules: {
-    "camelcase": "off",
+    camelcase: 'off',
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': [
       'error',
