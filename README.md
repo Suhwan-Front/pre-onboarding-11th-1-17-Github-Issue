@@ -35,7 +35,7 @@ $ npm run start
 
 ## 프로젝트 링크
 
-[프로젝트 바로가기](https://main--dynamic-stardust-16b5d1.netlify.app/)
+[프로젝트 바로가기](https://master--bejewelled-beignet-535e27.netlify.app/)
 
 ## 전체 구동 화면
 
