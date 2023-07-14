@@ -1,26 +1,20 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
-import { ListContext } from '../contexts/provider/ListProvider';
+import React, { useEffect, useRef } from 'react';
 import { IssueWrap } from '../components/IssueList/IssueListPresenter';
 import IssueListItem from '../components/IssueList/IssueListItem';
 import Advertisement from '../components/Advertisement/Advertisement';
 import useInfiniteScroll from '../hooks/useInfinityScroll';
-import Loading from '../components/IssueList/Loading';
 import ScrollObserver from '../components/ScrollObserver/ScrollObserver';
 import ErrorPage from './ErrorPage';
+import { useIssueList } from '../hooks/useIssue';
 
 const IssueListPage = () => {
-  const { issueList, fetchIssueList, fetchError } = useContext(ListContext);
+  const { issueList, fetchIssueList, fetchError } = useIssueList();
   const target = useRef(null);
   const Intersecting = useInfiniteScroll(target);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (Intersecting) fetchIssueList();
-    setLoading(true);
-    return () => {
-      setLoading(false);
-    };
-  }, [Intersecting, fetchIssueList]);
+  }, [Intersecting]);
 
   if (fetchError) {
     return <ErrorPage errorContent={fetchError} />;
@@ -39,7 +33,6 @@ const IssueListPage = () => {
         </React.Fragment>
       ))}
       <ScrollObserver ref={target} />
-      {loading && <Loading />}
     </IssueWrap>
   );
 };

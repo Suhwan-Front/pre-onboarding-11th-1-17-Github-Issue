@@ -5,6 +5,7 @@ import {
   SetStateAction,
   Dispatch,
 } from 'react';
+import { useLoading } from '../../hooks/useLoading';
 import { getIssueList } from '../../utils/apiUtils';
 
 interface GiHubIssueList {
@@ -46,11 +47,15 @@ export const ListProvider = ({ children }: ListProviderProps) => {
   const [issueList, setIssueList] = useState<GiHubIssueList[]>([]);
   const [issueListPage, setIssueListPage] = useState<number>(1);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const { handleLoading } = useLoading();
 
   const fetchIssueList = async () => {
     try {
       const currentPage = issueListPage;
+      handleLoading(true);
       const newIssueList = await getIssueList(currentPage, 10);
+      handleLoading(false);
+
       setIssueListPage((prev) => prev + 1);
       setIssueList((prevList) => [...prevList, ...newIssueList]);
     } catch (error) {
